@@ -1,32 +1,32 @@
 pipeline {
     agent any
     stages {
-        stage('Clone'){
-            steps{
-                print "clone"
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],
-                    userRemoteConfigs: [ [
-                        credentialsId: 'Sorayut',
-                        url: 'https://github.com/SorayutChroenrit/FRONTNED401.git'
-                    ] ]
-                ])
-                print "Checkout success"
+        stage('Clone') {
+            steps {
+                script {
+                    echo "Cloning repository..."
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/main']],
+                        userRemoteConfigs: [[
+                            credentialsId: 'Sorayut',
+                            url: 'https://github.com/SorayutChroenrit/FRONTNED401.git'
+                        ]]
+                    ])
+                    echo "Checkout successful"
+                }
             }
         }
-    }
-    stages {
-        stage('Build'){
-            steps{
-                print "Jenkins Build"
+        
+        stage('Build') {
+            steps {
+                echo "Jenkins Build"
             }
         }
-    }
-    stages {
-        stage('Testing'){
-            steps{
-                print "Jenkins Testing"
+        
+        stage('Testing') {
+            steps {
+                echo "Jenkins Testing"
             }
         }
     }
