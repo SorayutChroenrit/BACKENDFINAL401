@@ -33,7 +33,7 @@ pipeline {
                 script {
                     echo "Docker Image to Running Container"
                     sh "docker rm -f frontend401-run || true"
-                    sh "docker run -d --name frontend401-run -p 54100:3000 frontend401:latest"
+                    sh "docker run -d --name frontend401-run -p 54100:3002 frontend401:latest"
                     echo "Docker Image to Running Container Success"
                 }
             }
