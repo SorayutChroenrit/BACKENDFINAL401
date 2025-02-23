@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'docker:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
     stages {
         stage('Clone') {
             steps {
@@ -22,7 +17,7 @@ pipeline {
                 }
             }
         }
-
+        
         stage('Build') {
             steps {
                 script {
@@ -32,8 +27,8 @@ pipeline {
                 }
             }
         }
-
-        stage('Run Container') {
+        
+        stage('Run') {
             steps {
                 script {
                     echo "Docker Image to Running Container"
@@ -43,7 +38,7 @@ pipeline {
                 }
             }
         }
-
+        
         stage('Testing') {
             steps {
                 echo "Jenkins Testing"
