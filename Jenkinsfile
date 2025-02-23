@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Jenkins Build"
-                sh docker build -t frontend401v1:latest .
+                sh docker build -t frontend401v1 .
             }
         }
         
