@@ -4,16 +4,16 @@ pipeline {
         stage('Clone') {
             steps {
                 script {
-                    echo "Cloning repository..."
+                    print "Cloning repository..."
                     checkout([
                         $class: 'GitSCM',
                         branches: [[name: '*/main']],
                         userRemoteConfigs: [[
-                            credentialsId: 'Sorayut',
+                                credentialsId: 'Sorayut',
                             url: 'https://github.com/SorayutChroenrit/FRONTNED401.git'
                         ]]
                     ])
-                    echo "Checkout successful"
+                    print "Checkout successful"
                 }
             }
         }
@@ -21,6 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Jenkins Build"
+                sh docker build -t frontend401v1:latest .
             }
         }
         
