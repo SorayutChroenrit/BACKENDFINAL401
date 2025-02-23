@@ -22,6 +22,7 @@ pipeline {
             steps {
                 script {
                     echo "Docker Build Image"
+                    sh "/usr/local/bin/docker pull --disable-content-trust=false node:20-alpine"
                     sh "/usr/local/bin/docker build -t frontend401 ."
                     echo "Docker Build Image Success"
                 }
